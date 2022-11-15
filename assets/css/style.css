@@ -152,11 +152,34 @@ h6 {
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
+
+  /* News */
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
-}
 
+  section {
+    padding: 40px 0!important;
+    }
+
+  .border-right-white
+  {
+    border-right: none!important;
+    padding-right: 0px!important;
+  }
+  section#vision
+  {
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+  }
+  #header.fixed-top {
+    height: 65px !important;
+  }
+
+  #header .logo img {
+    max-height: 40px !important;
+  }
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -464,6 +487,10 @@ h6 {
   background-size: cover;
   position: relative;
 }
+#hero .swiper-slide
+{
+  height: 88vh;
+}
 
 #hero .slider-content {
   padding-right: 120px;
@@ -485,7 +512,7 @@ h6 {
   background-color: var(--secondary);
   position: absolute;
   bottom: 0px;
-  padding: 50px;
+  padding: 30px;
   cursor: pointer;
   z-index: 9999999;
 }
@@ -531,16 +558,19 @@ h6 {
   color: var(--secondary);
 }
 
-#hero .mode-changing {
+.mode-changing {
   /* right: 0; */
   right: 10px;
   margin: 0 auto;
   background-color: var(--primary);
-  position: absolute;
+  position: fixed;
   top: 40%;
   padding: 20px 10px;
   border-radius: 20px;
   z-index: 9999999;
+}
+.mode-changing li{
+ cursor: pointer;
 }
 
 #hero .mode-changing img {
@@ -676,7 +706,7 @@ section {
   overflow: hidden;
 }
 section#vision {
-  padding: 120px 0;
+  padding: 65px 0;
   overflow: hidden;
 }
 
@@ -726,10 +756,12 @@ section#vision {
 --------------------------------------------------------------*/
 #vision {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 110px);
   background: url("../img/vision-bg.jpg") top left;
   background-size: cover;
   position: relative;
+  display:flex;
+  align-items:center;
 }
 
 /* #news:before {
@@ -755,7 +787,7 @@ section#vision {
 }
 
 #vision .padd-50 {
-  padding: 115px 80px;
+  padding: 65px 80px;
 }
 
 #vision .text-dark {
@@ -782,6 +814,11 @@ section#vision {
 #news h4 {
   font-weight: 600 !important;
   font-size: 22px !important;
+  height:61px;
+}
+
+#news p {
+  height:50px;
 }
 
 #news .news-overlay {
@@ -850,6 +887,9 @@ section#vision {
   cursor: pointer;
 }
 
+#programs .swiper-button-prev, #programs .swiper-button-next:after {display:none;}
+#programs .swiper-button-next{right:80px;}
+
 
 
 /*--------------------------------------------------------------
@@ -874,42 +914,44 @@ section#vision {
   top: 0;
   left: 0;
   right: 0;
-  padding: 20px;
+  /* padding: 20px; */
   transition: all 0.5s ease-in-out;
   cursor: pointer;
 }
 #policy .hoverlay:hover .text-white{
   color: var(--white) !important;
 }
-#policy .hoverlay:hover .this-img{
+
+#policy .policy-icon svg{
+	width:120px;
+	height:120px;
+}
+#policy .policy-icon{
+	text-align:center;
+	width:100%;
+	padding:35px 0 65px 0;
+}
+
+/*#policy .hoverlay:hover .this-img{
  display: inline-block !important;
 }
 #policy .hoverlay .this-img{
  display: none;
-}
+}*/
 
 #policy .flex-bottom {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
   flex-direction: column;
-  height: 100%;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 0px 30px;
+  padding:30px;
 }
 
 #policy small {
   font-size: 10px !important;
 }
 
-#policy .top-corner {
-  position: absolute;
-  top: 25px;
-}
+
 
 #policy .top-corner svg {
   height: 50px;
@@ -926,7 +968,7 @@ section#vision {
 }
 
 #policy .position-relative.mb-3.news-img-overlay {
-  height: 427px;
+  height: 460px;
 }
 
 #policy .text-red .policy-overlay {
@@ -947,10 +989,10 @@ section#vision {
 #social .bg-block-gray {
   background-color: var(--bg-block-gray) !important;
   padding: 40px 40px;
+  cursor:pointer;
 }
 #social .bg-block-gray:hover, #social .bg-block-red:hover, #social .bg-block-dark:hover {
-opacity: 0.9;
-cursor: pointer;
+background-color: var(--primary) !important;
 }
 
 #social .bg-block-red {
@@ -966,6 +1008,10 @@ cursor: pointer;
 #social img {
   width: 55px;
   height: 55px;
+}
+#social .bx-line {
+  border-left:1px solid #838383;
+  border-right:1px solid #838383;
 }
 
 
@@ -1028,15 +1074,19 @@ cursor: pointer;
 }
 
 .clients img {
-  max-width: 100px;
-  height: 100px;
+  max-width: 130px;
+  height: 130px;
   transition: all 0.4s ease-in-out;
   display: inline-block;
   padding: 15px 0;
+  filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
 }
 
 .clients img:hover {
   transform: scale(1.15);
+  filter: grayscale(0);
+    -webkit-filter: grayscale(0);
 }
 
 @media (max-width: 768px) {
